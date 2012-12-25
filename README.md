@@ -37,7 +37,7 @@ CGRect startRect = CGRectMake(30, 40, 50, 60);
                           completion:nil];
 ```
 
-[![](https://raw.github.com/Ciechan/BCGenieEffect/master/Screens/genieIn.gif)](https://raw.github.com/Ciechan/BCGenieEffect/master/Screens/genieOut.gif)
+[![](https://raw.github.com/Ciechan/BCGenieEffect/master/Screens/genieOut.gif)](https://raw.github.com/Ciechan/BCGenieEffect/master/Screens/genieOut.gif)
 
 ### Parameters
 
