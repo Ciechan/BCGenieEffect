@@ -37,7 +37,7 @@ CGRect startRect = CGRectMake(30, 40, 50, 60);
                           completion:nil];
 ```
 
-[![](https://raw.github.com/Ciechan/BCGenieEffect/master/Screens/genieIn.gif)](https://raw.github.com/Ciechan/BCGenieEffect/master/Screens/genieOut.gif)
+[![](https://raw.github.com/Ciechan/BCGenieEffect/master/Screens/genieOut.gif)](https://raw.github.com/Ciechan/BCGenieEffect/master/Screens/genieOut.gif)
 
 ### Parameters
 
@@ -56,7 +56,7 @@ Due the way BCGenieEffect works there are some limitations in spacing between an
 
 #### Correct positioning
 
-Let's start with situations in which animation will work. As you can see there is a clear and logical path which animated view will follow, it slips into the destination rect easly.
+Let's start with situations in which animation will work. As you can see there is a clear and logical path which animated view will follow, it slips into the destination rect easily.
 
 [![](https://raw.github.com/Ciechan/BCGenieEffect/master/Screens/positioningCorrect.png)](https://raw.github.com/Ciechan/BCGenieEffect/master/Screens/positioningCorrect.png)
 
@@ -65,13 +65,13 @@ Let's start with situations in which animation will work. As you can see there i
 While this example might seem similar, you should notice that the bottom edge of animated view is *below* the top edge of destination rect. While on OSX the window will move up so that it's bottom edge is above the dock, I've decided not to implement this autocorrection. BCGenieEffect will still perform the animation, however the results might be glitchy. It is advised that you either decide that the glitch is not important or manually move/animate the view to evade the problem. Whatever the case is, BCGenieEffect will `NSLog` a warning into console:
 
 ```
-Genie Effect Warning: The bottom edge of animated view overlaps top edge of destination rect. Glitches may occure.
+Genie Effect Warning: The bottom edge of animated view overlaps top edge of destination rect. Glitches may occur.
 ```
 
 [![](https://raw.github.com/Ciechan/BCGenieEffect/master/Screens/positioningUnadvisable.png)](https://raw.github.com/Ciechan/BCGenieEffect/master/Screens/positioningUnadvisable.png)
 #### Incorrect positioning
 
-The picture presents situation in which BCGenieEffect will not fire at all, since the requested animation curve is irrational. Positionig the view correctly will remove the problem. As before, BCGenieEffect will `NSLog` an error into console:
+The picture presents situation in which BCGenieEffect will not fire at all, since the requested animation curve is irrational. Positioning the view correctly will remove the problem. As before, BCGenieEffect will `NSLog` an error into console:
 
 ```
 Genie Effect ERROR: The distance between top edge of animated view and top edge of destination rect is incorrect. Animation will not be performed!
