@@ -5,8 +5,8 @@ An OSX style genie effect inside your iOS app.
 
 ## Features
 
-- Custom destination/start rect
-- Custom destination/start edge
+- UIView category
+- Custom destination/start rectangle and its edge
 - CoreAnimation based
 
 ## How To Use
@@ -62,7 +62,7 @@ Let's start with situations in which animation will work. As you can see there i
 
 #### Unadvisable positioning
 
-While this example might seem similar, you should notice that the bottom edge of animated view is *below* the top edge of destination rect. While on OSX the window will move up so that it's bottom edge is above the dock, I've decided not to implement this autocorrection. BCGenieEffect will still perform the animation, however the results might be glitchy. It is advised that you either decide that the glitch is not important or manually move/animate the view to evade the problem. 
+While this example might seem similar, you should notice that the bottom edge of animated view is *below* the top edge of destination rect. While on OSX the window will move up so that its bottom edge is above the dock, I've decided not to implement this autocorrection. BCGenieEffect will still perform the animation, however the results might be glitchy. It is advised that you either decide that the glitch is not important or manually move/animate the view to evade the problem. 
 When unadvisable positioning occurs, BCGenieEffect will `NSLog` a warning into console:
 
 ```
