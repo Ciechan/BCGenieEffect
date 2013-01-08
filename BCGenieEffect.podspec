@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name         = "UIView+Genie"
+  s.name         = "BCGenieEffect"
   s.version      = "1.0"
   s.summary      = "OSX style genie effect inside your iOS app."
   s.homepage     = "https://github.com/Ciechan/BCGenieEffect"
@@ -9,4 +9,6 @@ Pod::Spec.new do |s|
   s.platform     = :ios
   s.source_files = 'UIView+Genie.{h,m}'
   s.requires_arc = true
+  
+  s.ios.deployment_target = '5.0'
 end

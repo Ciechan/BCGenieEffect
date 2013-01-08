@@ -83,7 +83,7 @@ Genie Effect ERROR: The distance between top edge of animated view and top edge 
 
 ## Requirements
 
-- iOS 5.1
+- iOS 5.0
 - ARC
 - QuartzCore framework in your project
 
