@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		984039BD1688A03E00B0C168 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 984039BC1688A03E00B0C168 /* QuartzCore.framework */; };
 		984039BF1688A05D00B0C168 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 984039BE1688A05D00B0C168 /* Default-568h@2x.png */; };
-		9840903A1687224F0043AF9E /* UIView+Genie.m in Sources */ = {isa = PBXBuildFile; fileRef = 984090391687224F0043AF9E /* UIView+Genie.m */; };
 		9847A1B6167657C70027A6B3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9847A1B5167657C70027A6B3 /* UIKit.framework */; };
 		9847A1B8167657C70027A6B3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9847A1B7167657C70027A6B3 /* Foundation.framework */; };
 		9847A1BA167657C70027A6B3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9847A1B9167657C70027A6B3 /* CoreGraphics.framework */; };
@@ -18,13 +17,12 @@
 		9847A1C6167657C70027A6B3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9847A1C5167657C70027A6B3 /* AppDelegate.m */; };
 		9847A1CF167657C70027A6B3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9847A1CE167657C70027A6B3 /* ViewController.m */; };
 		9847A1D2167657C70027A6B3 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9847A1D0167657C70027A6B3 /* ViewController.xib */; };
+		98EA3842169DF15300280896 /* UIView+Genie.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EA3841169DF15300280896 /* UIView+Genie.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		984039BC1688A03E00B0C168 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		984039BE1688A05D00B0C168 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
-		984090381687224F0043AF9E /* UIView+Genie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Genie.h"; sourceTree = "<group>"; };
-		984090391687224F0043AF9E /* UIView+Genie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Genie.m"; sourceTree = "<group>"; };
 		9847A1B1167657C70027A6B3 /* BCGenieEffect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BCGenieEffect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9847A1B5167657C70027A6B3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9847A1B7167657C70027A6B3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -38,6 +36,8 @@
 		9847A1CD167657C70027A6B3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		9847A1CE167657C70027A6B3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		9847A1D1167657C70027A6B3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		98EA3840169DF15300280896 /* UIView+Genie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Genie.h"; path = "../../UIView+Genie.h"; sourceTree = "<group>"; };
+		98EA3841169DF15300280896 /* UIView+Genie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Genie.m"; path = "../../UIView+Genie.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,11 +88,11 @@
 			children = (
 				9847A1C4167657C70027A6B3 /* AppDelegate.h */,
 				9847A1C5167657C70027A6B3 /* AppDelegate.m */,
+				98EA3840169DF15300280896 /* UIView+Genie.h */,
+				98EA3841169DF15300280896 /* UIView+Genie.m */,
 				9847A1CD167657C70027A6B3 /* ViewController.h */,
 				9847A1CE167657C70027A6B3 /* ViewController.m */,
 				9847A1D0167657C70027A6B3 /* ViewController.xib */,
-				984090381687224F0043AF9E /* UIView+Genie.h */,
-				984090391687224F0043AF9E /* UIView+Genie.m */,
 				9847A1BC167657C70027A6B3 /* Supporting Files */,
 			);
 			path = BCGenieEffect;
@@ -178,7 +178,7 @@
 				9847A1C2167657C70027A6B3 /* main.m in Sources */,
 				9847A1C6167657C70027A6B3 /* AppDelegate.m in Sources */,
 				9847A1CF167657C70027A6B3 /* ViewController.m in Sources */,
-				9840903A1687224F0043AF9E /* UIView+Genie.m in Sources */,
+				98EA3842169DF15300280896 /* UIView+Genie.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
