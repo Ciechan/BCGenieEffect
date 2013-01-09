@@ -314,16 +314,17 @@ static const int BCTrapezoidWinding[4][4] = {
     
     for (int i = 0; i < count; i++) {
         CGRect rect = {i*origin.x*scale, i*origin.y*scale, sliceSize.width*scale, sliceSize.height*scale};
-        UIImage *sliceImage = [UIImage imageWithCGImage: CGImageCreateWithImageInRect(image.CGImage, rect)
+        CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, rect);
+        UIImage *sliceImage = [UIImage imageWithCGImage:imageRef
                                                   scale:image.scale
                                             orientation:image.imageOrientation];
-        
+        CGImageRelease(imageRef);
         CALayer *layer = [CALayer layer];
         layer.anchorPoint = CGPointZero;
         layer.bounds = CGRectMake(0.0, 0.0, sliceImage.size.width, sliceImage.size.height);
         layer.contents = (__bridge id)(sliceImage.CGImage);
         layer.contentsScale = image.scale;
-        [slices addObject:layer];
+        [slices addObject:layer];        
     }
     
     return slices;
