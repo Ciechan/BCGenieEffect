@@ -198,7 +198,7 @@ static const int BCTrapezoidWinding[4][4] = {
         
         // With 'Renders with edge antialiasing' = YES in info.plist the slices are
         // rendered with a border, this disables this making the UIView appear as supposed
-        [containerView.layer.sublayers.lastObject setEdgeAntialiasingMask:NO];
+        [layer setEdgeAntialiasingMask:0];
         
         [transforms addObject:[NSMutableArray array]];
     }
