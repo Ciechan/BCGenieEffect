@@ -232,7 +232,7 @@ static const int BCTrapezoidWinding[4][4] = {
                                        finalRectDepth:endRectDepth];
         
         [trs enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            [transforms[idx] addObject:obj];
+            [(NSMutableArray *)transforms[idx] addObject:obj];
         }];
     }
     
