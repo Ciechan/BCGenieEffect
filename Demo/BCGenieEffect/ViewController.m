@@ -33,8 +33,16 @@
         button.enabled = NO;
     }];
     
+    CGFloat draggedViewAlpha = 0.6;
     if (self.viewIsIn) {
-        [self.draggedView genieOutTransitionWithDuration:duration startRect:endRect startEdge:edge completion:^{
+        self.draggedView.alpha = 1.0; // to make fully visible screenshot
+        [self.draggedView genieOutTransitionWithDuration:duration startRect:endRect startEdge:edge prepeare:^(UIView *containerView) {
+            containerView.alpha = draggedViewAlpha;
+        } alongsideAnimations:^(UIView *containerView) {
+            [UIView animateWithDuration:duration animations:^{
+                containerView.alpha = 1.0;
+            }];
+        } completion:^{
             self.draggedView.userInteractionEnabled = YES;
             [self.buttons enumerateObjectsUsingBlock:^(UIButton *button, NSUInteger idx, BOOL *stop) {
                 button.enabled = YES;
@@ -42,11 +50,19 @@
         }];
     } else {
         self.draggedView.userInteractionEnabled = NO;
-        [self.draggedView genieInTransitionWithDuration:duration destinationRect:endRect destinationEdge:edge completion:
-         ^{
-             [self.buttons enumerateObjectsUsingBlock:^(UIButton *button, NSUInteger idx, BOOL *stop) {
-                 button.enabled = YES;
-             }];}];
+        self.draggedView.alpha = 1.0; // to make fully visible screenshot
+        [self.draggedView genieInTransitionWithDuration:duration destinationRect:endRect destinationEdge:edge prepeare:^(UIView *containerView) {
+            containerView.alpha = 1.0;
+        } alongsideAnimations:^(UIView *containerView) {
+            [UIView animateWithDuration:duration animations:^{
+                containerView.alpha = draggedViewAlpha;
+            }];
+        } completion:^{
+            self.draggedView.alpha = draggedViewAlpha; // shoul be semi-transparent after animation.
+            [self.buttons enumerateObjectsUsingBlock:^(UIButton *button, NSUInteger idx, BOOL *stop) {
+                button.enabled = YES;
+            }];
+         }];
     }
     
     self.viewIsIn = ! self.viewIsIn;
