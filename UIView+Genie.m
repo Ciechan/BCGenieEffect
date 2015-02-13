@@ -115,20 +115,24 @@ static const int BCTrapezoidWinding[4][4] = {
 
 #pragma mark - publics
 
-- (void)genieInTransitionWithDuration:(NSTimeInterval)duration destinationRect:(CGRect)destRect destinationEdge:(BCRectEdge)destEdge completion:(void (^)())completion {
+- (void)genieInTransitionWithDuration:(NSTimeInterval)duration destinationRect:(CGRect)destRect destinationEdge:(BCRectEdge)destEdge prepeare:(void (^)(UIView* containerView))prepeare alongsideAnimations:(void (^)(UIView* containerView))alongsideAnimations completion:(void (^)())completion {
     
     [self genieTransitionWithDuration:duration
                                  edge:destEdge
                       destinationRect:destRect
                               reverse:NO
+                             prepeare:(void (^)(UIView* containerView))prepeare
+                  alongsideAnimations:(void (^)(UIView* containerView))alongsideAnimations
                            completion:completion];
 }
 
-- (void)genieOutTransitionWithDuration:(NSTimeInterval)duration startRect:(CGRect)startRect startEdge:(BCRectEdge)startEdge completion:(void (^)())completion {
+- (void)genieOutTransitionWithDuration:(NSTimeInterval)duration startRect:(CGRect)startRect startEdge:(BCRectEdge)startEdge prepeare:(void (^)(UIView* containerView))prepeare alongsideAnimations:(void (^)(UIView* containerView))alongsideAnimations completion:(void (^)())completion {
     [self genieTransitionWithDuration:duration
                                  edge:startEdge
                       destinationRect:startRect
                               reverse:YES
+                             prepeare:(void (^)(UIView* containerView))prepeare
+                  alongsideAnimations:(void (^)(UIView* containerView))alongsideAnimations
                            completion:completion];
 }
 
@@ -136,9 +140,11 @@ static const int BCTrapezoidWinding[4][4] = {
 
 
 - (void) genieTransitionWithDuration:(NSTimeInterval) duration
-                           edge:(BCRectEdge) edge
+                                edge:(BCRectEdge) edge
                      destinationRect:(CGRect)destRect
                              reverse:(BOOL)reverse
+                            prepeare:(void (^)(UIView* containerView))prepeare
+                 alongsideAnimations:(void (^)(UIView* containerView))alongsideAnimations
                           completion:(void (^)())completion
 {
     assert(!CGRectIsNull(destRect));
@@ -238,6 +244,10 @@ static const int BCTrapezoidWinding[4][4] = {
     
     // Animation firing
     
+    if (prepeare) {
+        prepeare(containerView);
+    }
+    
     [CATransaction begin];
     [CATransaction setCompletionBlock:^{
     
@@ -276,6 +286,10 @@ static const int BCTrapezoidWinding[4][4] = {
         [layer addAnimation:anim forKey:@"transform"];
     }];
     
+    if (alongsideAnimations) {
+        alongsideAnimations(containerView);
+    }
+    
     [CATransaction commit];
 }
 
@@ -297,8 +311,14 @@ static const int BCTrapezoidWinding[4][4] = {
     UIGraphicsBeginImageContextWithOptions(contextSize, NO, 0.0); // if you want to see border added for antialiasing pass YES as second param
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextTranslateCTM(context, xOffset, yOffset);
-    
+
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_7_0
+    // Glitch may occur on iPhone6/Plus devices because of YES flag in following call in case when native resolution support is not enabled.
+    // See http://stackoverflow.com/questions/26070420/ios8-scale-glitch-when-calling-drawviewhierarchyinrect-afterscreenupdatesyes
+    [self drawViewHierarchyInRect:self.bounds afterScreenUpdates:YES];
+#else
     [self.layer renderInContext:context];
+#endif
     
     UIImage *snapshot = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();

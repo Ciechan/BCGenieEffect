@@ -9,6 +9,11 @@ OSX style genie effect inside your iOS app.
 - Custom destination/start rectangle and its edge
 - CoreAnimation based
 
+### This fork features
+
+- Snapshots are taking with ```-[drawViewHierarchyInRect:afterScreenUpdates:YES]``` method. The fallback to ```-[renderInContext:]``` is kept for iOS prior then 7.x.
+- The ```prepeare``` and ```alongsideAnimation``` blocks are added to category methods. This allows to animate something in parallel with the genie effect. For example to set the transparency of the flying shape (see the demo project).
+
 ## How To Use
 
 ### Genie in
@@ -17,8 +22,10 @@ OSX style genie effect inside your iOS app.
 ```
 CGRect endRect = CGRectMake(30, 40, 50, 60);
 [view genieInTransitionWithDuration:0.7 
-                    destinationRect:endRect 
-                    destinationEdge:BCRectEdgeTop 
+                    destinationRect:endRect
+                    destinationEdge:BCRectEdgeTop
+                           prepeare:nil 
+                alongsideAnimations:nil
                          completion:^{
                           	NSLog(@"I'm done!");
                           }];
@@ -34,7 +41,9 @@ CGRect startRect = CGRectMake(30, 40, 50, 60);
 [view genieOutTransitionWithDuration:0.7 
                            startRect:startRect
                            startEdge:BCRectEdgeLeft 
-                          completion:nil];
+                           prepeare:nil 
+                alongsideAnimations:nil
+                         completion:nil];
 ```
 
 [![](https://raw.github.com/Ciechan/BCGenieEffect/master/Screens/genieOut.gif)](https://raw.github.com/Ciechan/BCGenieEffect/master/Screens/genieOut.gif)
