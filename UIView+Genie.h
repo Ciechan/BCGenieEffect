@@ -25,7 +25,7 @@ typedef NS_ENUM(NSUInteger, BCRectEdge) {
 - (void)genieInTransitionWithDuration:(NSTimeInterval)duration
                       destinationRect:(CGRect)destRect
                       destinationEdge:(BCRectEdge)destEdge
-                           completion:(void (^)())completion;
+                           completion:(void (^)(void))completion;
 
 
 
@@ -36,6 +36,6 @@ typedef NS_ENUM(NSUInteger, BCRectEdge) {
 - (void)genieOutTransitionWithDuration:(NSTimeInterval)duration
                              startRect:(CGRect)startRect
                              startEdge:(BCRectEdge)startEdge
-                            completion:(void (^)())completion;
+                            completion:(void (^)(void))completion;
 
 @end
